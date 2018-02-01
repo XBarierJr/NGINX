@@ -1,0 +1,30 @@
+KONFIGURASI NGINX,PHP5,PHP-FPM
+
+1. INSTALASI
+	apt-get install nginx php5 php5-fpm
+
+2. KONFIGURASI PHP FPM
+	nano /etc/php5/fpm/php.ini
+	cari kalimat ;cgi.fix_pathinfo=1
+	lalu ganti dengan cgi.fix_pathinfo=0
+
+3. KONFIGURASI NGINX
+	nano /etc/nginx/sites-available/default
+	hapus pagar pada bagian 
+		1. location ~ \.php$ {
+		2. fastcgi_split_path_info ^(.+\.php)(/.+)$;
+		3. fastcgi_pass unix:/var/run/php5-fpm.sock;
+		4. fastcgi_index index.php;
+		5. include fastcgi_params;
+		6. }
+			
+4. KONFIGURASI PHP
+	cd /usr/share/nginx/www
+	nano info.php
+		<?php
+		phpinfo();
+		?>
+
+5. service nginx 
+
+note : sebelumnya saya sudah memiliki domain orbit.com dengan ip 192.168.1.1
