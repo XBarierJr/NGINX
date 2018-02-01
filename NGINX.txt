@@ -25,6 +25,6 @@ KONFIGURASI NGINX,PHP5,PHP-FPM
 		phpinfo();
 		?>
 
-5. service nginx 
+5. service nginx restart 
 
 note : sebelumnya saya sudah memiliki domain orbit.com dengan ip 192.168.1.1
